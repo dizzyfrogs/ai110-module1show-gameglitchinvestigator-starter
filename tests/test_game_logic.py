@@ -1,4 +1,11 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, get_range_for_difficulty, update_score
+
+def test_hard_range_wider_than_normal():
+    # Hard difficulty should have a wider range than Normal to be genuinely harder
+    _, hard_high = get_range_for_difficulty("Hard")
+    _, normal_high = get_range_for_difficulty("Normal")
+    assert hard_high > normal_high
+
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
