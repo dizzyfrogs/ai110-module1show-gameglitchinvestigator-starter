@@ -7,6 +7,18 @@ def test_hard_range_wider_than_normal():
     assert hard_high > normal_high
 
 
+def test_too_high_message_says_lower():
+    # When guess exceeds the secret, the hint should direct the player downward
+    _, message = check_guess(60, 50)
+    assert "LOWER" in message
+
+
+def test_too_low_message_says_higher():
+    # When guess is below the secret, the hint should direct the player upward
+    _, message = check_guess(40, 50)
+    assert "HIGHER" in message
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)
