@@ -14,9 +14,9 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| Guessed 50 | Too Low hint | Too High hint | None |
+| Hard difficulty | Guess from 1-100 | Difficulty was ignored | None |
+| Started New Game | Reset score & history | Did not reset | None |
 
 ---
 
