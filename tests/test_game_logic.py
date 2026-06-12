@@ -48,6 +48,12 @@ def test_each_difficulty_has_distinct_range():
     assert easy != hard
 
 
+def test_numeric_comparison_not_lexicographic():
+    # 9 < 10 numerically but "9" > "10" lexicographically; must use int comparison
+    outcome, _ = check_guess(9, 10)
+    assert outcome == "Too Low"
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)
