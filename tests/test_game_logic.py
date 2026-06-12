@@ -25,6 +25,12 @@ def test_too_high_on_even_attempt_deducts_score():
     assert score < 100
 
 
+def test_easy_range_is_1_to_20():
+    # Easy range must be narrow so new games generate secrets within the correct bounds
+    low, high = get_range_for_difficulty("Easy")
+    assert low == 1 and high == 20
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)
