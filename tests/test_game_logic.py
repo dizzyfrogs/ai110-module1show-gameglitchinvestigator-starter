@@ -31,6 +31,13 @@ def test_easy_range_is_1_to_20():
     assert low == 1 and high == 20
 
 
+def test_win_on_first_attempt_uses_attempt_number_1():
+    # Scoring a win on attempt 1 should give 100 - 10*(1+1) = 80 points,
+    # confirming attempt counting starts at 1 (not 0)
+    score = update_score(0, "Win", attempt_number=1)
+    assert score == 80
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)

@@ -70,7 +70,8 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    st.session_state.attempts = 0
+    # FIX: was reset to 0 but initial state starts at 1; aligning to avoid off-by-one
+    st.session_state.attempts = 1
     # FIX: was hardcoded to 1-100; now uses the selected difficulty range
     st.session_state.secret = random.randint(low, high)
     st.success("New game started.")
