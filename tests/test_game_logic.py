@@ -19,6 +19,12 @@ def test_too_low_message_says_higher():
     assert "HIGHER" in message
 
 
+def test_too_high_on_even_attempt_deducts_score():
+    # A wrong guess should never earn points, regardless of attempt parity
+    score = update_score(100, "Too High", attempt_number=2)
+    assert score < 100
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)
