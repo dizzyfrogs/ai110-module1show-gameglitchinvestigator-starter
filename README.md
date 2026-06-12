@@ -25,28 +25,35 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- The game is a number guessing game where the player tries to guess a secret number within a limited number of attempts. Hints guide the player higher or lower after each guess, and a score tracks performance.
+- 7 bugs were found. The hint messages were inverted, the Hard difficulty range was narrower than Normal, wrong guesses awarded points on even attempts, the New Game button always generated a secret in the 1-100 range regardless of difficulty, the attempt counter reset to the wrong value on new games, the guess prompt hardcoded "1 and 100" for all difficulties, and a string cast on every even attempt caused lexicographic instead of numeric comparison.
+- Each bug was fixed in its own commit. Logic fixes went into `logic_utils.py` and UI/state fixes went into `app.py`. A pytest case was added for each fix.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Select a difficulty from the sidebar. Easy gives a range of 1-20, Normal 1-100, and Hard 1-200.
+2. Open the "Developer Debug Info" expander to see the secret number and your current attempt count.
+3. Type a guess and click "Submit Guess". The hint will correctly say to go higher or lower.
+4. Keep guessing. Score drops by 5 on each wrong guess and the remaining attempt count updates.
+5. Guess correctly and the app shows your final score. Click "New Game" to reset and the new secret will stay within the selected difficulty range.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+======================================================================= test session starts =======================================================================
+platform linux -- Python 3.14.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/dizzyfrogs/Projects/AI110/ai110-module1show-gameglitchinvestigator-starter
+configfile: pytest.ini
+plugins: anyio-4.13.0
+collected 11 items                                                                                                                                                
+
+tests/test_game_logic.py ...........                                                                                                                        [100%]
+
+======================================================================= 11 passed in 0.01s ========================================================================
 ```
 
 ## 🚀 Stretch Features
