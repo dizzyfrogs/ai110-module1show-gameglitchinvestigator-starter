@@ -38,6 +38,16 @@ def test_win_on_first_attempt_uses_attempt_number_1():
     assert score == 80
 
 
+def test_each_difficulty_has_distinct_range():
+    # Each difficulty should produce a different range so the UI displays correct bounds
+    easy = get_range_for_difficulty("Easy")
+    normal = get_range_for_difficulty("Normal")
+    hard = get_range_for_difficulty("Hard")
+    assert easy != normal
+    assert normal != hard
+    assert easy != hard
+
+
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
     result = check_guess(50, 50)
